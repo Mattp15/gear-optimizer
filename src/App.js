@@ -2,7 +2,7 @@ import logo from './logo.svg'
 import './App.css'
 import React, { useState, useEffect } from 'react'
 import { Test } from './Components'
-import { getMouseEventOptions } from '@testing-library/user-event/dist/utils'
+import { ClassSelect } from './Components/ClassSelect'
 const accessToken = process.env.REACT_APP_ACCESS_TOKEN
 const App = () => {
   const [fetchResponse, setFetchResponse] = useState()
@@ -10,7 +10,6 @@ const App = () => {
   const [itemId, setItemId] = useState(200293)
   const [itemName, setItemName] = useState("Primal Scion's Twinblade")
   const [itemObject, setItemObject] = useState()
-  const [mousePos, setMousePos] = useState({})
 
   const handleGetItem = async () => {
     const response = await fetch('https://us.api.blizzard.com/data/wow/item/' + itemId + '?namespace=static-us&locale=en_US&access_token=' + accessToken, {
@@ -60,9 +59,15 @@ const App = () => {
     setImgState(res.assets[0].value)
   }
 
+  const [classes, setClasses] = useState(['Select a class ', 'Death Knight', 'Druid', 'Demon Hunter', 'Evoker', 'Mage', 'Monk', 'Hunter', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior'])
+  const [selectedClass, setSelectedClass] = useState()
+  const handleClassChange = ({ target }) => {
+    setSelectedClass(target.value)
+  }
   return (
     <div className='App'>
       <header className='App-header'>
+        <ClassSelect onChange={handleClassChange} classes={classes} />
         <button onClick={handleGetItem}>get item by id</button>
         <button onClick={getItemByName}>get item by name</button>
         <button onClick={getMedia}>Get media</button>
