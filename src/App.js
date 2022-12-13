@@ -85,6 +85,10 @@ const App = () => {
   })
   const [classMedia, setClassMedia] = useState()
   const [armourType, setArmourType] = useState()
+
+  //Universal Equipment with no armour type - useContext
+  //TODO Add names of items for search query, then push found item object into respective objects dedicated state
+  //In child, allow user to select their specialization and filter accessories by their desired primary stat (some items have dynamic stats)
   const [back, setBack] = useState([])
   const [backObjects, setBackObjects] = useState([])
   const [trinkets, setTrinkets] = useState([])
@@ -118,6 +122,8 @@ const App = () => {
         <button onClick={getItemByName}>get item by name</button>
         <Test state={classMedia} />
         <Test state={itemObject} />
+        {/* I'm choosing to split the armour classes becuse I'm hard coding the names of items per armour type, 
+        so I'm trying to avoid massive state clusters in one component*/}
         {selectedClass === 'Priest' || selectedClass === 'Mage' || selectedClass === 'Warlock' ? <Cloth /> : ''}
         {selectedClass === 'Druid' || selectedClass === 'Rogue' || selectedClass === 'Deamon Hunter' ? <Leather /> : ''}
         {selectedClass === 'Hunter' || selectedClass === 'Shaman' || selectedClass === 'Evoker' ? <Mail /> : ''}
