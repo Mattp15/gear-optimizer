@@ -48,16 +48,6 @@ const App = () => {
     const mediaRes = await mediaResponse.json()
     setImgState(mediaRes.assets[0].value)
   }
-  const getMedia = async () => {
-    const response = await fetch('https://us.api.blizzard.com/data/wow/media/item/' + itemId + '?namespace=static-10.0.2_46479-us&access_token=' + accessToken, {
-      method: 'GET',
-      header: {
-        'Content-Type': 'application/json;charset=UTF-8',
-      },
-    })
-    const res = await response.json()
-    setImgState(res.assets[0].value)
-  }
 
   const [classes, setClasses] = useState(['Select a class ', 'Death Knight', 'Druid', 'Demon Hunter', 'Evoker', 'Mage', 'Monk', 'Hunter', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior'])
   const [selectedClass, setSelectedClass] = useState()
@@ -114,10 +104,9 @@ const App = () => {
     <div className='App'>
       <header className='App-header'>
         <ClassSelect onChange={handleClassChange} classes={classes} />
-        {selectedClass ? <ClassSelect onChange={handleSpecChange} classes={classSpecs[selectedClass]} /> : ''}
+        {selectedClass ? <ClassSelect onChange={handleSpecChange} classes={classSpecs[selectedClass]} /> : ''} {/* Will likely move this down a level into the child that handles each class*/}
         <button onClick={handleGetItem}>get item by id</button>
         <button onClick={getItemByName}>get item by name</button>
-        <button onClick={getMedia}>Get media</button>
         <Test state={classMedia} />
         <Test state={itemObject} />
       </header>
