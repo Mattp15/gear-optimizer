@@ -48,6 +48,7 @@ const App = () => {
     })
     const mediaRes = await mediaResponse.json()
     setImgState(mediaRes.assets[0].value)
+    console.log(foundItemObject[0])
   }
 
   const [classes, setClasses] = useState(['Select a class ', 'Death Knight', 'Druid', 'Demon Hunter', 'Evoker', 'Mage', 'Monk', 'Hunter', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior'])
@@ -90,6 +91,7 @@ const App = () => {
   //TODO Add names of items for search query, then push found item object into respective objects dedicated state
   //In child, allow user to select their specialization and filter accessories by their desired primary stat (some items have dynamic stats)
   //Add a link to not the object, but a clickable event of the object directed at wowhead.com/item={itemId}
+  //Use name to get the id, then search by the ID, it gives more data on the item
   const [back, setBack] = useState(['Acid-Proof Webbing', "Decorated Commander's Cindercloak"])
   const [backObjects, setBackObjects] = useState([])
   const [neck, setNeck] = useState(['Eye of the Vengeful Hurricant', "Terros's Captive Core"])
