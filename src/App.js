@@ -77,9 +77,35 @@ const App = () => {
     Warlock: ['Affliction', 'Demonology', 'Destruction'],
     Warrior: ['Arms', 'Fury', 'Protection'],
   })
+  const [classId, setClassId] = useState({
+    'Death Knight': 6,
+    Druid: 11,
+    'Demon Hunter': 12,
+    Evoker: 13,
+    Mage: 8,
+    Monk: 10,
+    Hunter: 3,
+    Paladin: 2,
+    Priest: 5,
+    Rogue: 4,
+    Shaman: 7,
+    Warlock: 9,
+    Warrior: 1,
+  })
+  const [classMedia, setClassMedia] = useState()
 
-  const handleClassChange = ({ target }) => {
-    setSelectedClass(target.value)
+  const handleClassChange = async ({ target }) => {
+    const { value } = target
+    setSelectedClass(value)
+    const mediaResponse = await fetch('https://us.api.blizzard.com/data/wow/media/playable-class/' + classId[value] + '?namespace=static-10.0.2_46479-us&access_token=' + accessToken, {
+      method: 'GET',
+      header: {
+        'Content-Type': 'application/json;charset=UTF-8',
+      },
+    })
+    const { assets } = await mediaResponse.json()
+    console.log(assets[0].value)
+    setClassMedia(assets[0].value)
   }
   const handleSpecChange = ({ target }) => {
     console.log(target)
@@ -92,7 +118,7 @@ const App = () => {
         <button onClick={handleGetItem}>get item by id</button>
         <button onClick={getItemByName}>get item by name</button>
         <button onClick={getMedia}>Get media</button>
-        <Test state={imgState} />
+        <Test state={classMedia} />
         <Test state={itemObject} />
       </header>
     </div>
