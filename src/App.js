@@ -89,14 +89,15 @@ const App = () => {
   //Universal Equipment with no armour type - useContext
   //TODO Add names of items for search query, then push found item object into respective objects dedicated state
   //In child, allow user to select their specialization and filter accessories by their desired primary stat (some items have dynamic stats)
-  const [back, setBack] = useState([])
+  //Add a link to not the object, but a clickable event of the object directed at wowhead.com/item={itemId}
+  const [back, setBack] = useState(['Acid-Proof Webbing', "Decorated Commander's Cindercloak"])
   const [backObjects, setBackObjects] = useState([])
+  const [neck, setNeck] = useState(['Eye of the Vengeful Hurricant', "Terros's Captive Core"])
+  const [neckObjects, setNeckObjects] = useState([])
+  const [ring, setRing] = useState(["Emissary's Flamewrought Seal", "Seal of Diurna's Chosen", 'Seal of Filial Dury'])
+  const [ringObjects, setRingObjects] = useState([])
   const [trinkets, setTrinkets] = useState([])
   const [tricketsObjects, setTrinketsObjects] = useState([])
-  const [neck, setNeck] = useState([])
-  const [neckObjects, setNeckObjects] = useState([])
-  const [ring, setRing] = useState([])
-  const [ringObjects, setRingObjects] = useState([])
   const handleClassChange = async ({ target }) => {
     const { value } = target
     setSelectedClass(value)
