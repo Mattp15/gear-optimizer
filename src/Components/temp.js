@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react'
+import React, { useCallback } from 'react'
 
 const Test = ({ state }) => {
-  useEffect(() => {
+  useCallback(() => {
     console.log(state)
-  }, [])
+  }, [state])
   if (typeof state == 'string') {
     return (
       <div>

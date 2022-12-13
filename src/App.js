@@ -61,13 +61,34 @@ const App = () => {
 
   const [classes, setClasses] = useState(['Select a class ', 'Death Knight', 'Druid', 'Demon Hunter', 'Evoker', 'Mage', 'Monk', 'Hunter', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior'])
   const [selectedClass, setSelectedClass] = useState()
+  const [selectedSpec, setSelectedSpec] = useState(['none', 'none', 'none'])
+  const [classSpecs, setClassSpecs] = useState({
+    'Death Knight': ['Blood', 'Frost', 'Unholy'],
+    Druid: ['Balance', 'Feral', 'Guardian', 'Restoration'],
+    'Demon Hunter': ['Havoc', 'Vengeance'],
+    Evoker: ['Devastation', 'Preservation'],
+    Mage: ['Arcane', 'Fire', 'Frost'],
+    Monk: ['Brewmaster', 'Mistweaver', 'Windwalker'],
+    Hunter: ['Beast Mastery', 'Marksmanship', 'Survival'],
+    Paladin: ['Holy', 'Protection', 'Retribution'],
+    Priest: ['Discipline', 'Holy', 'Shadow'],
+    Rogue: ['Assassination', 'Outlaw', 'Subtlety'],
+    Shaman: ['Elemental', 'Enhancement', 'Restoration'],
+    Warlock: ['Affliction', 'Demonology', 'Destruction'],
+    Warrior: ['Arms', 'Fury', 'Protection'],
+  })
+
   const handleClassChange = ({ target }) => {
     setSelectedClass(target.value)
+  }
+  const handleSpecChange = ({ target }) => {
+    console.log(target)
   }
   return (
     <div className='App'>
       <header className='App-header'>
         <ClassSelect onChange={handleClassChange} classes={classes} />
+        {selectedClass ? <ClassSelect onChange={handleSpecChange} classes={classSpecs[selectedClass]} /> : ''}
         <button onClick={handleGetItem}>get item by id</button>
         <button onClick={getItemByName}>get item by name</button>
         <button onClick={getMedia}>Get media</button>
