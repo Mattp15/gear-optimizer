@@ -85,6 +85,14 @@ const App = () => {
   })
   const [classMedia, setClassMedia] = useState()
   const [armourType, setArmourType] = useState()
+  const [backIds, setBackIds] = useState()
+  const [backObjects, setBackObjects] = useState({})
+  const [trinketsIds, setTrinketsIds] = useState([])
+  const [tricketsObjects, setTrinketsObjects] = useState({})
+  const [neckIds, setNeckIds] = useState([])
+  const [neckObjects, setNeckObjects] = useState({})
+  const [ringIds, setRingIds] = useState([])
+  const [ringObjects, setRingObjects] = useState({})
   const handleClassChange = async ({ target }) => {
     const { value } = target
     setSelectedClass(value)
