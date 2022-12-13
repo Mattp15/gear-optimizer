@@ -1,6 +1,6 @@
 import React from 'react'
 
 const Mail = () => {
-  return
+  return <h1>I am Mail</h1>
 }
 export default Mail

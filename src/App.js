@@ -3,6 +3,7 @@ import './App.css'
 import React, { useState, useEffect } from 'react'
 import { Test } from './Components'
 import { ClassSelect } from './Components/ClassSelect'
+import { Cloth, Leather, Mail, Plate } from './Components/ArmorType'
 const accessToken = process.env.REACT_APP_ACCESS_TOKEN
 const App = () => {
   const [fetchResponse, setFetchResponse] = useState()
@@ -83,7 +84,7 @@ const App = () => {
     Warrior: 1,
   })
   const [classMedia, setClassMedia] = useState()
-
+  const [armourType, setArmourType] = useState()
   const handleClassChange = async ({ target }) => {
     const { value } = target
     setSelectedClass(value)
@@ -109,6 +110,10 @@ const App = () => {
         <button onClick={getItemByName}>get item by name</button>
         <Test state={classMedia} />
         <Test state={itemObject} />
+        {selectedClass === 'Priest' || selectedClass === 'Mage' || selectedClass === 'Warlock' ? <Cloth /> : ''}
+        {selectedClass === 'Druid' || selectedClass === 'Rogue' || selectedClass === 'Deamon Hunter' ? <Leather /> : ''}
+        {selectedClass === 'Hunter' || selectedClass === 'Shaman' || selectedClass === 'Evoker' ? <Mail /> : ''}
+        {selectedClass === 'Death Knight' || selectedClass === 'Paladin' || selectedClass === 'Warrior' ? <Plate /> : ''}
       </header>
     </div>
   )
