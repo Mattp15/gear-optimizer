@@ -8,7 +8,7 @@ const accessToken = process.env.REACT_APP_ACCESS_TOKEN
 const App = () => {
   const [fetchResponse, setFetchResponse] = useState()
   const [imgState, setImgState] = useState()
-  const [itemId, setItemId] = useState(200293)
+  const [itemId, setItemId] = useState(143973)
   const [itemName, setItemName] = useState("Primal Scion's Twinblade")
   const [itemObject, setItemObject] = useState()
 
@@ -116,9 +116,22 @@ const App = () => {
   const handleSpecChange = ({ target }) => {
     console.log(target)
   }
+  const testApi = async () => {
+    const response = await fetch('https://us.api.blizzard.com/data/wow/journal-encounter/672?namespace=static-10.0.2_46479-us&access_token=' + accessToken, {
+      method: 'GET',
+      header: {
+        'cache-control': 'public, max-age=86400',
+        'Content-Type': 'application/json;charset=UTF-8',
+      },
+    })
+    const res = await response.json()
+
+    console.log(res)
+  }
   return (
     <div className='App'>
       <header className='App-header'>
+        <button onClick={testApi}>Test API</button>
         <ClassSelect onChange={handleClassChange} classes={classes} />
         {selectedClass ? <ClassSelect onChange={handleSpecChange} classes={classSpecs[selectedClass]} /> : ''} {/* Will likely move this down a level into the child that handles each class*/}
         <button onClick={handleGetItem}>get item by id</button>
