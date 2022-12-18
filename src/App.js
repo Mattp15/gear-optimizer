@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react'
 import { Test } from './Components'
 import { ClassSelect } from './Components/ClassSelect'
 import { Cloth, Leather, Mail, Plate } from './Components/ArmorType'
+import { Character } from './Pages'
 const accessToken = process.env.REACT_APP_ACCESS_TOKEN
 const App = () => {
   const [fetchResponse, setFetchResponse] = useState()
@@ -131,19 +132,21 @@ const App = () => {
   return (
     <div className='App'>
       <header className='App-header'>
-        <button onClick={testApi}>Test API</button>
-        <ClassSelect onChange={handleClassChange} classes={classes} />
-        {selectedClass ? <ClassSelect onChange={handleSpecChange} classes={classSpecs[selectedClass]} /> : ''} {/* Will likely move this down a level into the child that handles each class*/}
-        <button onClick={handleGetItem}>get item by id</button>
+        {/* <button onClick={testApi}>Test API</button> */}
+        {/* <ClassSelect onChange={handleClassChange} classes={classes} /> */}
+        {/* {selectedClass ? <ClassSelect onChange={handleSpecChange} classes={classSpecs[selectedClass]} /> : ''}  */}
+        {/* Will likely move this down a level into the child that handles each class*/}
+        {/* <button onClick={handleGetItem}>get item by id</button>
         <button onClick={getItemByName}>get item by name</button>
         <Test state={classMedia} />
-        <Test state={itemObject} />
+        <Test state={itemObject} /> */}
         {/* I'm choosing to split the armour classes becuse I'm hard coding the names of items per armour type, 
         so I'm trying to avoid massive state clusters in one component*/}
         {selectedClass === 'Priest' || selectedClass === 'Mage' || selectedClass === 'Warlock' ? <Cloth /> : ''}
         {selectedClass === 'Druid' || selectedClass === 'Rogue' || selectedClass === 'Deamon Hunter' ? <Leather /> : ''}
         {selectedClass === 'Hunter' || selectedClass === 'Shaman' || selectedClass === 'Evoker' ? <Mail /> : ''}
         {selectedClass === 'Death Knight' || selectedClass === 'Paladin' || selectedClass === 'Warrior' ? <Plate /> : ''}
+        <Character />
       </header>
     </div>
   )
