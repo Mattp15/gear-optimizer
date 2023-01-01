@@ -41,7 +41,7 @@ const style = {
     backgroundColor: 'rgba(0, 0, 0, 0.3)',
     borderRadius: '20px',
     border: '6px solid black',
-    color: 'white',
+    color: 'rgba(255, 255, 255, 0.7)',
     display: 'flex',
     flexFlow: 'column nowrap',
     height: '200px',
