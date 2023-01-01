@@ -6,8 +6,10 @@ const ToolTip = () => {
   const [description, setDescription] = useState('This is the description of the Item')
   return (
     <div style={style.toolTip}>
-      <img src='#' alt='Tooltip Image' style={style.toolTipImg} />
-      <p style={style.title}>{title}</p>
+      <div style={style.innerWrapping}>
+        <img src='#' alt='Tooltip Image' style={style.toolTipImg} />
+        <p style={style.title}>{title}</p>
+      </div>
       <p style={style.lineOne}>{lineOne}</p>
       <p style={style.description}>{description}</p>
       <p style={style.description}>{description}</p>
@@ -25,9 +27,14 @@ const style = {
     paddingLeft: '1.2rem',
     margin: '0.2rem',
   },
+  innerWrapping: {
+    display: 'flex',
+    flexFlow: 'row nowrap',
+    marginBottom: '0.2rem',
+  },
   title: {
     paddingLeft: '2rem',
-    margin: '1rem',
+    margin: '0.2rem',
   },
   toolTip: {
     alignItems: 'flex-start',
